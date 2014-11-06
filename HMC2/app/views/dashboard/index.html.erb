@@ -1,0 +1,20 @@
+<div class="container-fluid">
+<div class="row" style="background-color:Aqua;text-align:center;" >
+<h2><%= current_user.email.split('@')[0] %>'s dashboard</h2>
+</div>
+<div class="row">
+<p> HI!  </p>
+<%= link_to 'Logout', destroy_user_session_path , :method => :delete %><br/>
+<%= link_to 'Create New Poll', new_poll_path %> <br/>
+Polls created so far:-<br/>
+<ul>
+   <% Poll.all.each do |poll| %>
+    <% if poll.user_id == current_user.id %>
+    <% @p = poll.title %>
+    <li> <%= link_to "p" ,poll %>  <%=link_to "delete poll", poll.delete %></li>
+    <% end %>
+   <% end %>
+</ul>
+</tbody>
+</div>
+</div>
